@@ -1,0 +1,15 @@
+$primary: #4793AF;
+$secondary: #FFC470;
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+
+.btn-primary:hover {
+  border-color: $secondary;
+  border-width: 1px;
+}
+
+code {
+    background-color: $gray-200;
+    padding: 1rem;
+    display: block
+}
