@@ -4,7 +4,7 @@
         <ol>
             <li>
                 <p>Install Bootstrap</p>
-                <code>npm install bootstrap</code><br>
+                <code>npm install bootstrap</code>
             </li>
             <br>
             <li>
