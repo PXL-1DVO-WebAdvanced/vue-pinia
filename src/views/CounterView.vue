@@ -26,10 +26,5 @@ export default {
             this.counter--; 
         }
     },   
-    computed: {
-        isEven() {
-            return this.counter % 2 === 0;
-        }
-    }
 }
 </script>
