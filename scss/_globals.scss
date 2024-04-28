@@ -3,6 +3,10 @@ $secondary: #FFC470;
 
 @import "../node_modules/bootstrap/scss/bootstrap";
 
+html, body {
+  height: 100%;
+}
+
 .btn-primary:hover {
   border-color: $secondary;
   border-width: 1px;
