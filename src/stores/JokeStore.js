@@ -12,10 +12,18 @@ export const useJokeStore = defineStore('joke', {
             fetch('https://icanhazdadjoke.com/', { 
                 headers: { Accept: 'application/json' } 
             })
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Failed to fetch joke. Status: ' + response.status + ' ' + response.statusText)
+                }
+                return response.json()
+            })
             .then((data) => {
                 this.jokes.push(data.joke)
             })
+            .catch((error) => {
+                console.error(error)
+            });
         },
         async fetchJokeAsync() {
             try {
@@ -24,9 +32,10 @@ export const useJokeStore = defineStore('joke', {
                 })
                 const data = await response.json()
                 this.jokes.push(data.joke)
+                console.log('Joke fetched succesfully!')
             } catch (error) {
                 console.error(error)
-            }
+            } 
         }
     },
 });

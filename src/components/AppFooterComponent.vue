@@ -14,8 +14,12 @@ export default {
             jokeStore: useJokeStore()
         }
     },
-    async mounted() {
-        await this.jokeStore.fetchJokeAsync();
+    // async mounted() {
+    //     await this.jokeStore.fetchJokeAsync();
+    // },
+    mounted() {
+        this.jokeStore.fetchJokeAsync();
+        console.log('mounted');
     },
     methods: {
         async fetchJoke() {
