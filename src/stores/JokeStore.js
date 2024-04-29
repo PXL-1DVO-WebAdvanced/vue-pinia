@@ -30,6 +30,9 @@ export const useJokeStore = defineStore('joke', {
                 const response = await fetch('https://icanhazdadjoke.com/', { 
                     headers: { Accept: 'application/json' } 
                 })
+                if(!response.ok) {
+                    throw new Error('Failed to fetch joke. Status: ' + response.status + ' ' + response.statusText)
+                }
                 const data = await response.json()
                 this.jokes.push(data.joke)
                 console.log('Joke fetched succesfully!')
