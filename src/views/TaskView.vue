@@ -1,6 +1,10 @@
 <template>
     <div>
-      <h2>Todo List</h2>
+      <h2>Todo List
+        <span class="badge bg-primary text-secondary">
+                {{ taskStore.todos.length }}
+        </span>
+      </h2>
       <div class="input-group mb-3">
         <input type="text" class="form-control" v-model="newTodo" @keyup.enter="addTodo()">
         <button class="btn btn-primary" @click="addTodo()">Add</button>

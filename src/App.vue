@@ -9,12 +9,21 @@
 <script>
 import NavBar from '@/components/NavBarComponent.vue'
 import AppFooter from '@/components/AppFooterComponent.vue'
+import { useCounterStore } from '@/stores/CounterStore'
 
 export default { 
+  data() {
+    return {
+      counterStore: useCounterStore()
+    }
+  },
   components: {
     NavBar,
     AppFooter
-  }
+  },
+  created() {
+      this.counterStore.init();
+  },
 }
 </script>
 <style scoped>
