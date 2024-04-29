@@ -6,31 +6,35 @@
         <button class="btn btn-primary" @click="addTodo()">Add</button>
       </div>
       <ul class="list-group">
-        <li class="list-group-item" v-for="(todo, index) in todos" :key="index">
-          <input type="checkbox" /> {{ todo }}
-          <button class="btn btn-danger btn-sm float-end" @click="removeTodo(index)">Remove</button>
+        <li class="list-group-item" v-for="task in this.taskStore.tasks" :key="task.id">
+          <p>{{ task.title }}</p>
+          <input type="checkbox" v-model="task.isDone" />
+          <input type="text" v-model="task.title" />
+          <button class="btn btn-danger btn-sm float-end" @click="removeTodo(task.id)">Remove</button>
         </li>
       </ul>
     </div>
 </template>
+
 <script>
+import { useTaskStore } from '@/stores/TaskStore';
 
 export default {
   data() {
     return {
+      taskStore: useTaskStore(),
       newTodo: '',
-      todos: [],
     };
   },
   methods: {
     addTodo() {
       if (this.newTodo.trim() !== '') {
-        this.todos.push(this.newTodo.trim());
+        this.taskStore.addTask({title: this.newTodo.trim(), isDone: false});
         this.newTodo = '';
       }
     },
-    removeTodo(index) {
-      this.todos.splice(index, 1);
+    removeTodo(id) {
+      this.taskStore.removeTask(id);
     }
   },
 };

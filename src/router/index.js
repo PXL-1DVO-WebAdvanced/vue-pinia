@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import BootstrapView from '@/views/BootstrapView.vue'
+import TaskView from '@/views/TaskView.vue'
 //import CounterView from '@/views/CounterView.vue'
 
 const router = createRouter({
@@ -15,6 +16,11 @@ const router = createRouter({
       path: '/bs',
       name: 'bootstrap',
       component: BootstrapView
+    },
+    {
+      path: '/tasks',
+      name: 'tasks',
+      component: TaskView
     },
     {
       path: '/counter',

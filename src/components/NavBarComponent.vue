@@ -23,6 +23,14 @@
               Counter <span class="badge bg-primary text-secondary">{{ counterStore.counter }}</span>
             </RouterLink>
           </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/tasks">
+              Taken 
+              <span class="badge bg-primary text-secondary">
+                {{ taskStore.todos.length }}
+              </span>
+            </RouterLink>
+          </li>
         </ul>
       </div>
     </div>
@@ -30,10 +38,12 @@
 </template>
 <script>
 import { useCounterStore } from '@/stores/CounterStore';
+import { useTaskStore } from '@/stores/TaskStore';
 export default {
   data() {
     return {
-      counterStore: useCounterStore()
+      counterStore: useCounterStore(),
+      taskStore: useTaskStore()
     }
   },
 }
