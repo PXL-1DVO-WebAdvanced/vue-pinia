@@ -1,12 +1,28 @@
 <template lang="html">
-    <div class="container w-25 mx-auto">
+    <div class="container w-25 mx-auto mb-5">
         <h2>Pinia</h2>
         <p>State Management for Vue 3</p>
-        <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1c/Pinialogo.svg/1200px-Pinialogo.svg.png" alt="Pinia logo" width="100%" height="auto">
+        <img src="@/assets/Pinialogo.png" id="image1" alt="Pinia logo" width="100%" height="auto">
+        <img :src="imagePath" id="image2" alt="Pinia logo" width="100%" height="auto">
     </div>
 </template>
 <script>
 export default {
-    
-}
+    data() {
+        return {
+            imagePath: null // Initialize imagePath as null initially
+        };
+    },
+    mounted() {
+        // Assuming you're fetching image paths from an API or database
+        this.fetchImage(); // Call a method to fetch image path
+    },
+    methods: {
+        async fetchImage() {
+            const imagePathFromDB = '@/assets/Pinialogo.png'; // Example path from the database
+            this.imagePath = imagePathFromDB; // Assign the fetched image path to imagePath
+            console.log(this.imagePath)
+        }
+    }
+};
 </script>
