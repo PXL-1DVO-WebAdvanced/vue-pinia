@@ -2,7 +2,7 @@
     <div class="container w-25 mx-auto mb-5">
         <h2>Pinia</h2>
         <p>State Management for Vue 3</p>
-        <img src="/Pinialogo.png" id="image1" alt="Pinia logo" width="100%" height="auto"> 
+        <img src="/assets/Pinialogo.png" id="image1" alt="Pinia logo" width="100%" height="auto"> 
         <img :src="imagePath" id="image2" alt="Pinia logo" width="100%" height="auto">
     </div>
 </template>
@@ -21,7 +21,7 @@ export default {
     },
     methods: {
         async fetchImage() {
-            const imagePathFromDB = '/Pinialogo.png';
+            const imagePathFromDB = '/assets/Pinialogo.png';
             this.imagePath = imagePathFromDB; // Assign the fetched image path to imagePath
             console.log(this.imagePath)
         }
