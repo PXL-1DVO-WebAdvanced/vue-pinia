@@ -19,7 +19,7 @@ export default {
     },
     methods: {
         async fetchImage() {
-            const imagePathFromDB = 'src/assets/Pinialogo.png'
+            const imagePathFromDB = './assets/Pinialogo.png';
             this.imagePath = imagePathFromDB; // Assign the fetched image path to imagePath
             console.log(this.imagePath)
         }
