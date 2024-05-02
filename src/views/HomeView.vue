@@ -3,28 +3,24 @@
         <h2>Pinia</h2>
         <p>State Management for Vue 3</p>
         <img src="/assets/Pinialogo.png" id="image1" alt="Pinia logo" width="100%" height="auto"> 
-        <img :src="imagePath" id="image2" alt="Pinia logo" width="100%" height="auto">
+
+        <h2>{{ title }}</h2>
+        <p>{{ intro }}</p>
+        <img :src="imagePath" id="image2" :alt="imageAlt" width="100%" height="auto">
     </div>
 </template>
 <script>
-// Importing an image using an absolute path
-
 export default {
     data() {
         return {
-            imagePath: null // Initialize imagePath as null initially
+            title: 'Pinia',
+            intro: 'State Management for Vue 3',
+            imagePath: '/assets/Pinialogo.png',
+            imageAlt: 'Pinia logo'
         };
     },
-    mounted() {
-        // Assuming you're fetching image paths from an API or database
-        this.fetchImage(); // Call a method to fetch image path
-    },
-    methods: {
-        async fetchImage() {
-            const imagePathFromDB = '/assets/Pinialogo.png';
-            this.imagePath = imagePathFromDB; // Assign the fetched image path to imagePath
-            console.log(this.imagePath)
-        }
-    }
 };
 </script>
+
+
+
