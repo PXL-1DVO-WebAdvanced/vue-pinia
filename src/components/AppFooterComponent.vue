@@ -1,7 +1,7 @@
 <template>
     <footer class="bg-body-tertiary text-center text-lg-start">
         <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.05);">
-            <p @click="fetchJoke()">{{ jokeStore.newestJoke }}</p>
+            <p  @click="fetchJoke()">{{ jokeStore.newestJoke }}</p>
         </div>
     </footer>
 </template>

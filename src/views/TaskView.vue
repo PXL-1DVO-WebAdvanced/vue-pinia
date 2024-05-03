@@ -22,12 +22,14 @@
 
 <script>
 import { useTaskStore } from '@/stores/TaskStore';
+import { useAuthStore } from '@/stores/AuthStore';
 
 export default {
   data() {
     return {
       taskStore: useTaskStore(),
       newTodo: '',
+      authStore: useAuthStore()
     };
   },
   methods: {
@@ -40,6 +42,13 @@ export default {
     removeTodo(id) {
       this.taskStore.removeTask(id);
     }
+  },
+  created() {
+    if(!this.authStore.isAuthenticated) {
+      this.$router.push('/login');
+      return;
+    }
+    console.log('TaskView created');
   },
 };
 </script>
