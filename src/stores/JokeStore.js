@@ -6,6 +6,7 @@ export const useJokeStore = defineStore('joke', {
     }),
     getters: {
         newestJoke: (state) => state.jokes[state.jokes.length - 1],
+        sortedJokes: (state) => state.jokes.slice().reverse(),
     },
     actions: {
         fetchJoke() {
