@@ -19,7 +19,7 @@
 export default {
     data() {
         return {
-            theValue: 7
+            theValue: 4
         };
     },
     computed: {
@@ -51,4 +51,6 @@ export default {
     li {
         margin: 10px 0;
     }
+
+    
 </style>

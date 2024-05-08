@@ -5,7 +5,7 @@
             <p>State Management for Vue 3</p>
             <img src="/assets/Pinialogo.png" id="image1" alt="Pinia logo" width="100%" height="auto"> 
          -->
-         <!-- <styled-component></styled-component> -->
+         <styled-component></styled-component>
 
         <h2>{{ title }}</h2>
         <p>{{ intro }}</p>
