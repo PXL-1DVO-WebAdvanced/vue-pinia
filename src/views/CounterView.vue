@@ -6,6 +6,7 @@
             <span v-if="counterStore.isEven"> == Even</span>
             <span v-if="!counterStore.isEven"> == Oneven</span>
         </p>
+        <input type="text" class="form-control my-2" v-model="counterStore.counter" ref="counterInput">
         <button class="btn btn-primary my-2 text-light" @click="increment()">+ 1</button>
         <button class="btn btn-primary my-2 text-light" @click="decrement()">- 1</button>
     </div>
@@ -25,9 +26,13 @@ export default {
     methods: {
         increment() {
             this.counterStore.increment(); 
+            this.$refs.counterInput.focus();
+            //this.$refs.counterInput.setSelectionRange(0, this.$refs.counterInput.value.length);
         },
         decrement() {
             this.counterStore.decrement(); 
+            //this.$refs.counterInput.select();
+            this.$refs.counterInput.focus();
         }
     }, 
     updated() {
