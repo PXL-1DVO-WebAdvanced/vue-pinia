@@ -3,8 +3,8 @@
         <h2>Counter: </h2>
         <p class=" my-2 border border-primary">
             {{ counter }}
-            <span> == Even</span>
-            <span> != Oneven</span>
+            <span v-if="isEven"> == Even</span>
+            <span v-if="!isEven"> != Oneven</span>
         </p>
         <button class="btn btn-primary my-2 text-light" @click="increment()">+ 1</button>
         <button class="btn btn-primary my-2 text-light" @click="decrement()">- 1</button>
@@ -25,6 +25,11 @@ export default {
         decrement() {
             this.counter--; 
         }
-    },   
+    },  
+    computed: {
+        isEven() {
+            return this.counter % 2 === 0; 
+        }
+    } 
 }
 </script>
