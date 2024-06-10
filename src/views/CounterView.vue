@@ -19,6 +19,9 @@ export default {
             counterStore : useCounterStore(),
         }
     },
+    mounted(){
+        this.counterStore.init();
+    },
     methods: {
         increment() {
             this.counterStore.increment(); 
