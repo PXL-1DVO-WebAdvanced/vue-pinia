@@ -13,10 +13,12 @@
 
 <script>
 import { useCounterStore } from '@/stores/CounterStore.js';
+import { useJokeStore } from '@/stores/JokeStore';
 export default {
     data() {
         return {
             counterStore : useCounterStore(),
+            jokeStore: useJokeStore()
         }
     },
     mounted(){
@@ -30,5 +32,8 @@ export default {
             this.counterStore.decrement(); 
         }
     },
+    updated() {
+        this.jokeStore.fetchJokeAsync();
+    }  
 }
 </script>

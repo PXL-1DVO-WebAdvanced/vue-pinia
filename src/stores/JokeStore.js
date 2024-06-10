@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia';
 
-export const useJokeStoreStore = defineStore('joke', {
+export const useJokeStore = defineStore('joke', {
     state: () => ({
         jokes: [],
     }),
     getters: {
-        newestJokes : state => {
+        newestJoke : state => {
             return state.jokes[state.jokes.length - 1];
         },
     },
