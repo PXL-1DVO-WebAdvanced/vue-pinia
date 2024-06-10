@@ -19,10 +19,12 @@
 </template>
 <script>
 import { useTaskStore } from '@/stores/TaskStore.js'; 
+import { useAuthStore } from '@/stores/AuthStore';
 export default {
   data() {
     return {
       taskStore: useTaskStore(),
+      authStore: useAuthStore(),
       newTodo: '',
       todos: [],
     };
@@ -40,6 +42,13 @@ export default {
       // this.todos.splice(index, 1);
     },
   },
+  created(){
+    if(this.authStore.isAuthenticated){
+      this.$router.push('/login');
+      return;
+    }
+    console.log('TaskView created');
+  }
 };
 </script>
   

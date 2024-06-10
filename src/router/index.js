@@ -3,6 +3,7 @@ import HomeView from '@/views/HomeView.vue'
 import BootstrapView from '@/views/BootstrapView.vue'
 import TaskView from '@/views/TaskView.vue'
 import JokerView from '@/views/JokesView.vue'
+import LoginView from '@/views/LoginView.vue'
 //import CounterView from '@/views/CounterView.vue'
 
 const router = createRouter({
@@ -33,7 +34,12 @@ const router = createRouter({
       path: '/jokes',
       name: 'jokes' ,
       component: JokerView
-    }
+    },
+    {
+      path: '/login',
+      name: 'login' ,
+      component: LoginView
+    },
   ]
 })
 

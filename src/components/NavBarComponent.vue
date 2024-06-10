@@ -32,7 +32,15 @@
           </li>
           <li class="nav-item">
             <RouterLink class="nav-link border border-primary rounded mx-2" to="/jokes">
-              Jokes
+              JokesTaken<span class="badge bg-primary text-secondary">
+                {{ jokeStore.jokes.length }}
+             </span>
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <button  v-if="authStore.isAuthenticated" class="nav-link border border-primary rounded mx-2" @click="logout" >Logout</button>
+            <RouterLink v-if="!authStore.isAuthenticated" class="nav-link border border-primary rounded mx-2" to="/login">
+             login
             </RouterLink>
           </li>
         </ul>
@@ -43,13 +51,21 @@
 <script>
 import { useCounterStore } from '@/stores/CounterStore';
 import { useTaskStore } from '@/stores/TaskStore';
+import { useJokeStore } from '@/stores/JokeStore';
+import { useAuthStore } from '@/stores/AuthStore';
 export default {
     data() {
         return {
             counterStore : useCounterStore(),
             taskStore : useTaskStore(),
+            jokeStore: useJokeStore(),
+            authStore: useAuthStore(),
         }
     },
+    methods(){
+      this.authStore.logout();
+      this.$router.push('/')
+    }
 }
 </script>
 <style lang="">
