@@ -30,6 +30,11 @@
                  {{ taskStore.tasks.length }}
               </span></RouterLink>
           </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/jokes">
+              Jokes
+            </RouterLink>
+          </li>
         </ul>
       </div>
     </div>

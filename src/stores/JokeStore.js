@@ -8,6 +8,9 @@ export const useJokeStore = defineStore('joke', {
         newestJoke : state => {
             return state.jokes[state.jokes.length - 1];
         },
+        sortedJokes : state => {
+            return state.jokes.slice().reverse();
+        },
     },
     actions: {
         async fetchJokeAsync() {
@@ -24,6 +27,6 @@ export const useJokeStore = defineStore('joke', {
             } catch (error) {
                 console.error(error)
             } 
-        }
+        },
     },
 });
