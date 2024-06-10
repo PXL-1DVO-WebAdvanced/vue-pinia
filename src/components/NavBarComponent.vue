@@ -19,7 +19,21 @@
             <RouterLink class="nav-link border border-primary rounded mx-2" to="/bs">Bootstrap</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link border border-primary rounded mx-2" to="/counter">Counter <span class="badge bg-primary text-secondary">*</span></RouterLink>
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/counter">
+               Counter <span class="badge bg-primary text-secondary">
+                  {{ counterStore.counter }}
+              </span></RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/tasks">
+              Taken<span class="badge bg-primary text-secondary">
+                 {{ taskStore.tasks.length }}
+              </span></RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/jokes">
+              Jokes
+            </RouterLink>
           </li>
         </ul>
       </div>
@@ -27,8 +41,15 @@
   </nav>
 </template>
 <script>
+import { useCounterStore } from '@/stores/CounterStore';
+import { useTaskStore } from '@/stores/TaskStore';
 export default {
-    
+    data() {
+        return {
+            counterStore : useCounterStore(),
+            taskStore : useTaskStore(),
+        }
+    },
 }
 </script>
 <style lang="">
