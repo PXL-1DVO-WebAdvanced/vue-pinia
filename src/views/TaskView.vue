@@ -1,23 +1,30 @@
 <template>
     <div>
-      <h2>Todo List</h2>
+      <h2>Todo List:
+        <span class="badge bg-primary text-secondary">{{ taskStore.tasks.length }}</span>
+      </h2>
       <div class="input-group mb-3">
         <input type="text" class="form-control" v-model="newTodo" @keyup.enter="addTodo()">
         <button class="btn btn-primary" @click="addTodo()">Add</button>
       </div>
       <ul class="list-group">
-        <li class="list-group-item" v-for="(todo, index) in todos" :key="index">
-          <input type="checkbox" /> {{ todo }}
-          <button class="btn btn-danger btn-sm float-end" @click="removeTodo(index)">Remove</button>
+        <li class="list-group-item" v-for="task in this.taskStore.tasks" :key="task.id">
+          <p>{{ task.title }}</p>
+          <input type="checkbox" v-model="task.isDone" /> 
+          <input type="text" v-model="task.title">
+          <button class="btn btn-danger btn-sm float-end" @click="removeTodo(task.id)">Remove</button>
         </li>
       </ul>
     </div>
 </template>
 <script>
-
+import { useTaskStore } from '@/stores/TaskStore.js'; 
+import { useAuthStore } from '@/stores/AuthStore';
 export default {
   data() {
     return {
+      taskStore: useTaskStore(),
+      authStore: useAuthStore(),
       newTodo: '',
       todos: [],
     };
@@ -25,14 +32,23 @@ export default {
   methods: {
     addTodo() {
       if (this.newTodo.trim() !== '') {
-        this.todos.push(this.newTodo.trim());
+        this.taskStore.addTask({title: this.newTodo.trim(), isDone: false});
+        // this.todos.push(this.newTodo.trim());
         this.newTodo = '';
       }
     },
-    removeTodo(index) {
-      this.todos.splice(index, 1);
-    }
+    removeTodo(id) {
+      this.taskStore.removeTask(id);
+      // this.todos.splice(index, 1);
+    },
   },
+  created(){
+    if(this.authStore.isAuthenticated){
+      this.$router.push('/login');
+      return;
+    }
+    console.log('TaskView created');
+  }
 };
 </script>
   
