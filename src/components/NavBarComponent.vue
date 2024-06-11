@@ -19,7 +19,28 @@
             <RouterLink class="nav-link border border-primary rounded mx-2" to="/bs">Bootstrap</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link border border-primary rounded mx-2" to="/counter">Counter <span class="badge bg-primary text-secondary">*</span></RouterLink>
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/counter">
+               Counter <span class="badge bg-primary text-secondary">
+                  {{ counterStore.counter }}
+              </span></RouterLink>
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/tasks">
+              Taken<span class="badge bg-primary text-secondary">
+                 {{ taskStore.tasks.length }}
+              </span></RouterLink>
+
+          </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/jokes">
+              Jokes<span class="badge bg-primary text-secondary">
+                {{ jokeStore.jokes.length }}
+             </span>
+            </RouterLink>
+          </li>
+          <li class="nav-item">
+            <button  v-if="authStore.isAuthenticated"  @click="logout()" class="nav-link border border-primary rounded mx-2" >Logout</button>
+            <RouterLink v-if="!authStore.isAuthenticated" class="nav-link border border-primary rounded mx-2" to="/login">login</RouterLink>
           </li>
         </ul>
       </div>
@@ -27,7 +48,25 @@
   </nav>
 </template>
 <script>
+import { useCounterStore } from '@/stores/CounterStore';
+import { useTaskStore } from '@/stores/TaskStore';
+import { useJokeStore } from '@/stores/JokeStore';
+import { useAuthStore } from '@/stores/AuthStore';
 export default {
+    data() {
+        return {
+            counterStore : useCounterStore(),
+            taskStore : useTaskStore(),
+            jokeStore: useJokeStore(),
+            authStore: useAuthStore(),
+        }
+    },
+    methods: {
+      logout() {
+        this.authStore.logout();
+        this.$router.push('/')
+      }
+    }
     
 }
 </script>
