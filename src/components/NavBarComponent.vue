@@ -29,19 +29,18 @@
               Taken<span class="badge bg-primary text-secondary">
                  {{ taskStore.tasks.length }}
               </span></RouterLink>
+
           </li>
           <li class="nav-item">
             <RouterLink class="nav-link border border-primary rounded mx-2" to="/jokes">
-              JokesTaken<span class="badge bg-primary text-secondary">
+              Jokes<span class="badge bg-primary text-secondary">
                 {{ jokeStore.jokes.length }}
              </span>
             </RouterLink>
           </li>
           <li class="nav-item">
-            <button  v-if="authStore.isAuthenticated" class="nav-link border border-primary rounded mx-2" @click="logout" >Logout</button>
-            <RouterLink v-if="!authStore.isAuthenticated" class="nav-link border border-primary rounded mx-2" to="/login">
-             login
-            </RouterLink>
+            <button  v-if="authStore.isAuthenticated"  @click="logout()" class="nav-link border border-primary rounded mx-2" >Logout</button>
+            <RouterLink v-if="!authStore.isAuthenticated" class="nav-link border border-primary rounded mx-2" to="/login">login</RouterLink>
           </li>
         </ul>
       </div>
@@ -62,10 +61,13 @@ export default {
             authStore: useAuthStore(),
         }
     },
-    methods(){
-      this.authStore.logout();
-      this.$router.push('/')
+    methods: {
+      logout() {
+        this.authStore.logout();
+        this.$router.push('/')
+      }
     }
+    
 }
 </script>
 <style lang="">

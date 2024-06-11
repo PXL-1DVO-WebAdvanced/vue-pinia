@@ -26,7 +26,6 @@ export default {
       taskStore: useTaskStore(),
       authStore: useAuthStore(),
       newTodo: '',
-      todos: [],
     };
   },
   methods: {
@@ -43,7 +42,7 @@ export default {
     },
   },
   created(){
-    if(this.authStore.isAuthenticated){
+    if(!this.authStore.isAuthenticated){
       this.$router.push('/login');
       return;
     }
