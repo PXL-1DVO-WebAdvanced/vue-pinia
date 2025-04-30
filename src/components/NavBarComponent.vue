@@ -19,7 +19,9 @@
             <RouterLink class="nav-link border border-primary rounded mx-2" to="/bs">Bootstrap</RouterLink>
           </li>
           <li class="nav-item">
-            <RouterLink class="nav-link border border-primary rounded mx-2" to="/counter">Counter <span class="badge bg-primary text-secondary">*</span></RouterLink>
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/counter">
+              Counter <span class="badge bg-primary text-secondary">{{ counterStore.counterValue }}</span>
+            </RouterLink>
           </li>
         </ul>
       </div>
@@ -27,8 +29,13 @@
   </nav>
 </template>
 <script>
+import { useCounterStore } from '@/stores/counter';
+import { mapStores } from 'pinia';
+
 export default {
-    
+  computed: {
+        ...mapStores(useCounterStore) // => counterStore aangemaakt!
+    },
 }
 </script>
 <style lang="">
