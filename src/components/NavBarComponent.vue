@@ -23,6 +23,11 @@
               Counter <span class="badge bg-primary text-secondary">{{ counterStore.counterValue }}</span>
             </RouterLink>
           </li>
+          <li class="nav-item">
+            <RouterLink class="nav-link border border-primary rounded mx-2" to="/task">
+              Tasks <span class="badge bg-primary text-secondary">{{ taskStore.numberOfTodos }}</span>
+            </RouterLink>
+          </li>
         </ul>
       </div>
     </div>
@@ -30,11 +35,12 @@
 </template>
 <script>
 import { useCounterStore } from '@/stores/counter';
+import { useTaskStore } from '@/stores/task';
 import { mapStores } from 'pinia';
 
 export default {
   computed: {
-        ...mapStores(useCounterStore) // => counterStore aangemaakt!
+        ...mapStores(useCounterStore, useTaskStore) // => counterStore aangemaakt + taskStore aangemaakt!
     },
 }
 </script>

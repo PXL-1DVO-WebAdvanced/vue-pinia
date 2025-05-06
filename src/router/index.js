@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '@/views/HomeView.vue'
 import BootstrapView from '@/views/BootstrapView.vue'
 //import CounterView from '@/views/CounterView.vue'
+import TaskView from '@/views/TaskView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -21,6 +22,10 @@ const router = createRouter({
       name: 'counter',
       //component: CounterView
       component: () => import('@/views/CounterView.vue') //lazy loading: only load when needed
+    },
+    {
+      path: '/task',
+      component: TaskView
     }
   ]
 })
